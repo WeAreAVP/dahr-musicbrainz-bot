@@ -178,7 +178,6 @@ def run():
         # If we're out of edits for the day, stop
         if edits_left <= 0:
             logging.warning("Out of edits for today. Try again later.")
-            save_progress(config, checked, modified, errors)
             break
 
         # Check an entry
@@ -204,15 +203,16 @@ def run():
 
     if errors:
         logging.error(
-            "%s were not checked successfully. Please run again.", len(errors)
+            "%s were not checked successfully.", len(errors)
         )
-    else:
-        logging.info(
-            "%s/%s checked successfully. %s links added.",
-            len(checked),
-            len(id_mappings),
-            len(modified),
-        )
+    logging.info(
+        "%s/%s checked successfully. %s links added.",
+        len(checked),
+        len(id_mappings),
+        len(modified),
+    )
+
+    save_progress(config, checked, modified, errors)
 
 
 if __name__ == "__main__":
