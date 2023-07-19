@@ -14,7 +14,11 @@ MusicBrainz link's presence in the Wikidata page that has been determined (via L
 ## Usage
 Install requirements using e.g. `pip install -r requirements.txt`
 
-Update `config.ini` file:
+Update `config.ini` file (see below)
+
+Run using: `python3 runbot.py`
+
+## Configuration
 ```
 [musicbrainz]
 server = <musicbrainz server to run on, e.g. test.musicbrainz.org>
@@ -36,4 +40,3 @@ save_interval = <integer number of entries to do before saving>
 edit_note = <message to be included in the Edit Note section of each edit>
 ```
 
-Run using: `python3 runbot.py`
