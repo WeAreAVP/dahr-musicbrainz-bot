@@ -21,7 +21,7 @@ class MusicBrainzClient:
     Attributes
     ----------
     server: str
-        The musicbrains server the client accesses (e.g. test.musicbrainz.org)
+        The MusicBrainz server the client accesses (e.g. test.musicbrainz.org)
     username: str
         Name of the user the client signs in as
     browser: selenium webdriver
@@ -30,7 +30,7 @@ class MusicBrainzClient:
     Methods
     -------
     login(username, password)
-        Logs in to the server specified at self.server using the provided credentials
+        Logs in to the server specified at `self.server` using the provided credentials
     edits_left(max_open_edits=2000, max_edits_per_day=1000)
         Returns the number of edits the bot may make today, given the provided limitations
     add_external_link(artist_id, link, edit_note=None, force_votable=True)
@@ -175,7 +175,8 @@ class MusicBrainzClient:
             if "Artist Not Found" in self.browser.find_element(By.XPATH, "/html/body").text:
                 logging.error("\t'Artist Not Found' for MB id %s", artist_id)
                 raise RuntimeError(f"\t'Artist Not Found' for MB id {artist_id}") from exc
-            raise RuntimeError(f"\t'Unable to add link for MB id {artist_id}") from exc
+            logging.error("\tUnable to add link for MB id %s", artist_id)
+            raise RuntimeError(f"\tUnable to add link for MB id {artist_id}") from exc
 
         # check if artist has DAHR link already
         page = self.browser.page_source
