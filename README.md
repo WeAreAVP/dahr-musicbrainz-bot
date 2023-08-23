@@ -6,7 +6,7 @@ MusicBrainz link's presence in the Wikidata page that has been determined (via L
 
 
 ## Overview
-- `editing.py` - Contains a class `MusicBrainzClient` for interacting with MusicBrainz. Based on previous bot, but much narrower functionality & using selenium web driver instead of mechanize (switched to handle info on pages loaded in via javascript)
+- `editing.py` - Contains a class `MusicBrainzClient` for interacting with MusicBrainz. 
 - `run_bot.py` - Handles loading/saving progress and running the editing loop over the input DAHR data.
 - `config.ini` - Configuration variables used by the bot.
 - `requirements.txt` - Required packages.
@@ -16,7 +16,7 @@ Install requirements using e.g. `pip install -r requirements.txt`
 
 Update `config.ini` file (see below)
 
-Run using: `python3 runbot.py`
+Run using: `python3 run_bot.py`
 
 ## Configuration
 ```
@@ -31,7 +31,7 @@ dahr_id_field = <field name in above CSV for DAHR ID>
 mb_id_field = <field name in above CSV for MusicBrainz ID>
 
 [general]
-headless = <False to run without visible browser, True to run with visible browser>
+headless = <False to run with visible browser, True to run without visible browser>
 checked_file = <path to json file for saving which entries have been checked>
 modified_file = <path to json file for saving which entries have been modified>
 error_file = <path to json file for saving errors>
