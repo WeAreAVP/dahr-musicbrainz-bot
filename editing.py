@@ -96,7 +96,7 @@ class MusicBrainzClient:
         logging.info("Logged in to MusicBrainz as %s at %s", self.username, self.server)
 
     # NOTE: This could be more efficient if it used the table on the user page. Fewer page loads.
-    def edits_left(self, max_open_edits=2000, max_edits_per_day=1000) -> int:
+    def edits_left(self, max_open_edits=2000, max_edits_per_day=1000) -> int:  # default: 2000 & 1000
         """
         Determine the number of edits the bot may make today
 
