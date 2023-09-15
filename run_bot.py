@@ -184,7 +184,9 @@ def run():
         logging.info("Checking MB entry %s", entry["mb"])
         try:
             link_added = mb_client.add_external_link(
-                entry["mb"], entry["dahr"], edit_note=config.get("general", "edit_note")
+                entry["mb"], entry["dahr"],
+                edit_note=config.get("general", "edit_note"),
+                force_votable=int(config.get("general", "force_votable"))
             )
             checked.append(entry)
             if link_added:
@@ -201,16 +203,16 @@ def run():
         if (num + 1) % save_interval == 0:
             save_progress(config, checked, modified, errors)
 
-    if errors:
-        logging.error(
-            "%s were not checked successfully.", len(errors)
-        )
     logging.info(
-        "%s/%s checked successfully. %s links added.",
+        "%s/%s checked so far. %s links added.",
         len(checked),
         len(id_mappings),
         len(modified),
     )
+    if errors:
+        logging.error(
+            "%s were not checked successfully.", len(errors)
+        )
 
     save_progress(config, checked, modified, errors)
 
