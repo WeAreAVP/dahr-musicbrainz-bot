@@ -193,6 +193,10 @@ def run():
                 modified.append(entry)
                 edits_left -= 1
 
+                # Remove entry from the error list if it was there
+                if entry in errors:
+                    errors = [error for error in errors if error['mb'] != entry['mb']]
+
         # If the edit request times out or otherwise failed, the entry wasn't fully checked.
         # Save it for the next run.
         except (TimeoutError, RuntimeError):
